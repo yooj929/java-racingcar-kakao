@@ -21,14 +21,17 @@ public class RacingCar implements Car {
         return this.distance;
     }
 
-    public void move(int seed) {
-        if (seed > BOUND) {
+    public void move(int condition) {
+        if (condition < 0 || condition > 9) {
+            throw new IllegalArgumentException("move의 condition은 0 ~ 9 사이의 값이어야합니다.");
+        }
+        if (condition > BOUND) {
             distance++;
         }
     }
 
     @Override
     public String toString() {
-        return String.format("%s : %s",name,"-".repeat(distance));
+        return String.format("%s : %s", name, "-".repeat(distance));
     }
 }
