@@ -1,8 +1,6 @@
-package racingcar.view;
+package racingcar.step1.view;
 
 import java.util.List;
-import racingcar.domain.Car;
-import racingcar.domain.RacingCarGame;
 
 public class OutputView {
     public void printStartMessage(){

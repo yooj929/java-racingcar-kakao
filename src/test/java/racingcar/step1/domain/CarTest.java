@@ -1,14 +1,9 @@
-package racingcar.domain;
+package racingcar.step1.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.lang.reflect.Field;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.Car;
-import racingcar.domain.RacingCar;
 
 public class CarTest {
 

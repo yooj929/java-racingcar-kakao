@@ -1,4 +1,4 @@
-package racingcar.generator;
+package racingcar.step1.generator;
 
 import java.util.Random;
 

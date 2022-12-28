@@ -1,7 +1,7 @@
-package racingcar;
+package racingcar.step1;
 
-import racingcar.domain.RacingCarGame;
-import racingcar.domain.RacingCarGameImpl;
+import racingcar.step1.domain.RacingCarGame;
+import racingcar.step1.domain.RacingCarGameImpl;
 
 public class RacingCarApp {
 

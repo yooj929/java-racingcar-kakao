@@ -1,14 +1,14 @@
-package racingcar.domain;
+package racingcar.step1.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.AppConfig;
-import racingcar.generator.RandomNumberGenerator;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.step1.AppConfig;
+import racingcar.step1.generator.RandomNumberGenerator;
+import racingcar.step1.view.InputView;
+import racingcar.step1.view.OutputView;
 
 public class RacingCarGameImpl implements RacingCarGame {
     private final RandomNumberGenerator randomNumberGenerator;

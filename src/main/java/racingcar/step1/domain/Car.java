@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.step1.domain;
 
 public interface Car {
 

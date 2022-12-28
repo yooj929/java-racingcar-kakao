@@ -1,18 +1,16 @@
-package racingcar.domain;
+package racingcar.step1.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.AppConfig;
-import racingcar.AppConfigImpl;
-import racingcar.generator.RandomNumberGenerator;
+import racingcar.step1.AppConfig;
+import racingcar.step1.AppConfigImpl;
+import racingcar.step1.generator.RandomNumberGenerator;
 
 public class RacingCarGameTest {
     static AppConfig appConfig;

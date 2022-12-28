@@ -1,9 +1,9 @@
-package racingcar;
+package racingcar.step1;
 
-import racingcar.generator.RandomNumberGenerator;
-import racingcar.generator.RandomNumberGeneratorImpl;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.step1.generator.RandomNumberGenerator;
+import racingcar.step1.generator.RandomNumberGeneratorImpl;
+import racingcar.step1.view.InputView;
+import racingcar.step1.view.OutputView;
 
 public class AppConfigImpl implements AppConfig {
     private final RandomNumberGenerator randomNumberGenerator = new RandomNumberGeneratorImpl();
