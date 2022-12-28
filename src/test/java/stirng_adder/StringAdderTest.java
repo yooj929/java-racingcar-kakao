@@ -50,7 +50,7 @@ public class StringAdderTest {
     @Test
     public void parseAnotherTest() {
         String text = "a";
-        assertThatThrownBy(() -> stringAdder.add(text)).isInstanceOf(NumberFormatException.class);
+        assertThatThrownBy(() -> stringAdder.add(text)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -103,5 +103,11 @@ public class StringAdderTest {
         String text = "1,0,3";
         int result = stringAdder.add(text);
         assertThat(result).isEqualTo(4);
+    }
+    @Test
+    public void customDelimiterNullTest() {
+        String text = "//s\n";
+        int result = stringAdder.add(text);
+        assertThat(result).isEqualTo(0);
     }
 }

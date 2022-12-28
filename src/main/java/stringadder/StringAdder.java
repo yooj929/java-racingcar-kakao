@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class StringAdder {
+    public static final String  PRIMITIVE_DELIMITER= ",|;";
+
     public int add(String text) {
         int result;
         if (isNullOrBlank(text)) {
@@ -24,25 +26,35 @@ public class StringAdder {
 
 
     public String[] split(String text) {
-        StringBuilder stringBuilder = new StringBuilder(",|;");
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
         if (m.find()) {
+            StringBuilder stringBuilder = new StringBuilder(PRIMITIVE_DELIMITER);
             String customDelimiter = m.group(1);
             stringBuilder.append("|").append(customDelimiter);
-            return m.group(2).split(stringBuilder.toString());
+            return split(m.group(2), stringBuilder.toString());
         }
-        return text.split(stringBuilder.toString());
+        return split(text, PRIMITIVE_DELIMITER);
+    }
+
+    private String[] split(String text, String delimiter) {
+        return text.split(delimiter);
     }
 
     public List<Integer> getNumbers(String[] numbers) {
         List<Integer> result;
         try {
-            result = Arrays.stream(numbers).map(Integer::parseInt).collect(Collectors.toList());
+            result = Arrays.stream(numbers).map(this::parseInt).collect(Collectors.toList());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
         return result;
     }
+    public Integer parseInt(String number){
+        if(isNullOrBlank(number))
+            return 0;
+        return Integer.parseInt(number);
+    }
+
 
     public void isValid(List<Integer> numbers) {
         if (numbers.stream().anyMatch(number -> number < 0)) {
