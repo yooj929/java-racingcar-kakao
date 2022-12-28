@@ -1,8 +1,10 @@
-package string_adder;
+package stringadder;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringAdder {
     public int add(String text) {
@@ -10,11 +12,9 @@ public class StringAdder {
         if (isNullOrBlank(text)) {
             return StringAdderConstant.IS_NULL_OR_BLANK;
         }
-        try {
-            result = summation(split(text));
-        } catch (NumberFormatException e) {
-            throw e;
-        }
+        List<Integer> numbers = getNumbers(split(text));
+        isValid(numbers);
+        result = sum(numbers);
         return result;
     }
 
@@ -28,19 +28,29 @@ public class StringAdder {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
         if (m.find()) {
             String customDelimiter = m.group(1);
-            stringBuilder.append("|" + customDelimiter);
+            stringBuilder.append("|").append(customDelimiter);
             return m.group(2).split(stringBuilder.toString());
         }
         return text.split(stringBuilder.toString());
     }
 
-    public void isValid(String[] numbers) {
-        if (Arrays.stream(numbers).anyMatch(number -> Integer.parseInt(number) < 0)) {
+    public List<Integer> getNumbers(String[] numbers) {
+        List<Integer> result;
+        try {
+            result = Arrays.stream(numbers).map(Integer::parseInt).collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+        }
+        return result;
+    }
+
+    public void isValid(List<Integer> numbers) {
+        if (numbers.stream().anyMatch(number -> number < 0)) {
             throw new RuntimeException("negative");
         }
     }
 
-    public int summation(String[] numbers) {
-        return Arrays.stream(numbers).map(Integer::parseInt).reduce(0, Integer::sum);
+    public int sum(List<Integer> numbers) {
+        return numbers.stream().reduce(0, Integer::sum);
     }
 }
